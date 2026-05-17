@@ -155,7 +155,21 @@ export function TripForm() {
 
   const [selectedVibes, setSelectedVibes] = useState<string[]>(['adventure']);
 
+  const [focusedField, setFocusedField] = useState<
+    'city' | 'destination' | null
+  >(null);
+
   const today = new Date().toISOString().split('T')[0];
+
+  const citySuggestions = supportedCities.filter((city) =>
+    city.toLowerCase().includes(formData.from.trim().toLowerCase())
+  );
+
+  const destinationSuggestions = supportedDestinations.filter((destination) =>
+    destination
+      .toLowerCase()
+      .includes(formData.destination.trim().toLowerCase())
+  );
 
   useEffect(() => {
     if (!isLoading) {
@@ -670,8 +684,12 @@ localStorage.setItem(
                   <input
                     type="text"
                     placeholder="e.g., Delhi"
-                     autoComplete="off"
                     value={formData.from}
+                    autoComplete="off"
+                    onFocus={() => setFocusedField('city')}
+                    onBlur={() => {
+                      window.setTimeout(() => setFocusedField(null), 160);
+                    }}
                     onChange={(e) =>
                       setFormData({
                         ...formData,
@@ -679,10 +697,36 @@ localStorage.setItem(
                       })
                     }
                     className="w-full rounded-xl border border-border/50 bg-background px-4 py-3 text-base outline-none transition-colors focus:border-purple-500"
-                    
                   />
 
-
+                  {focusedField === 'city' && citySuggestions.length > 0 && (
+                    <motion.div
+                      className="absolute left-0 right-0 top-[52px] z-50 max-h-56 overflow-y-auto rounded-2xl border border-white/10 bg-[#080b16]/95 p-2 shadow-2xl shadow-purple-500/20 backdrop-blur-xl"
+                      initial={{ opacity: 0, y: -6 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      transition={{ duration: 0.18 }}
+                    >
+                      {citySuggestions.map((city) => (
+                        <button
+                          key={city}
+                          type="button"
+                          onMouseDown={() => {
+                            setFormData({
+                              ...formData,
+                              from: city,
+                            });
+                            setFocusedField(null);
+                          }}
+                          className="flex w-full items-center justify-between rounded-xl px-3 py-2.5 text-left text-sm text-foreground/75 transition hover:bg-purple-500/15 hover:text-white"
+                        >
+                          <span>{city}</span>
+                          <span className="text-xs text-purple-300">
+                            Pickup city
+                          </span>
+                        </button>
+                      ))}
+                    </motion.div>
+                  )}
 
                   <p className="text-xs text-foreground/50 mt-2">
                     Start from a supported city — more pickup cities are coming
@@ -707,8 +751,12 @@ localStorage.setItem(
                   <input
                     type="text"
                     placeholder="e.g., Goa"
-                     autoComplete="off"
                     value={formData.destination}
+                    autoComplete="off"
+                    onFocus={() => setFocusedField('destination')}
+                    onBlur={() => {
+                      window.setTimeout(() => setFocusedField(null), 160);
+                    }}
                     onChange={(e) =>
                       setFormData({
                         ...formData,
@@ -716,10 +764,37 @@ localStorage.setItem(
                       })
                     }
                     className="w-full rounded-xl border border-border/50 bg-background px-4 py-3 text-base outline-none transition-colors focus:border-purple-500"
-                    
                   />
 
-                  
+                  {focusedField === 'destination' &&
+                    destinationSuggestions.length > 0 && (
+                      <motion.div
+                        className="absolute left-0 right-0 top-[52px] z-50 max-h-56 overflow-y-auto rounded-2xl border border-white/10 bg-[#080b16]/95 p-2 shadow-2xl shadow-blue-500/20 backdrop-blur-xl"
+                        initial={{ opacity: 0, y: -6 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        transition={{ duration: 0.18 }}
+                      >
+                        {destinationSuggestions.map((destination) => (
+                          <button
+                            key={destination}
+                            type="button"
+                            onMouseDown={() => {
+                              setFormData({
+                                ...formData,
+                                destination,
+                              });
+                              setFocusedField(null);
+                            }}
+                            className="flex w-full items-center justify-between rounded-xl px-3 py-2.5 text-left text-sm text-foreground/75 transition hover:bg-blue-500/15 hover:text-white"
+                          >
+                            <span>{destination}</span>
+                            <span className="text-xs text-blue-300">
+                              Supported
+                            </span>
+                          </button>
+                        ))}
+                      </motion.div>
+                    )}
 
                   <p className="text-xs text-foreground/50 mt-2">
                     Choose a supported escape — more destinations are coming soon.

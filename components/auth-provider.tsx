@@ -57,6 +57,9 @@ export function AuthProvider({
       provider: 'google',
       options: {
         redirectTo: `${origin}/auth/callback`,
+        queryParams: {
+          prompt: 'select_account',
+        },
       },
     });
   };

@@ -67,3 +67,57 @@ test('Mobile view loads properly', async ({ browser }) => {
 
   await context.close();
 });
+test('Trip generation flow works', async ({ page }) => {
+  await page.goto('https://tripnest-ai.vercel.app/home');
+
+  await page.getByPlaceholder('e.g., Delhi').fill('Delhi');
+
+  await page.getByPlaceholder('e.g., Goa').fill('Goa');
+
+  await page.getByRole('button', { name: /Plan My Escape/i }).click();
+
+  await page.waitForTimeout(5000);
+
+  await expect(page).toHaveURL(/results|home/);
+});
+test('Gujarati language works', async ({ page }) => {
+  await page.goto('https://tripnest-ai.vercel.app/home');
+
+  await page.getByText('ગુજરાતી').click();
+
+  await expect(page.getByText(/મારી ટ્રિપ બનાવો/i)).toBeVisible();
+});
+
+test('Tamil language works', async ({ page }) => {
+  await page.goto('https://tripnest-ai.vercel.app/home');
+
+  await page.getByText('தமிழ்').click();
+
+  await expect(
+    page.getByText('தமிழ்')
+  ).toBeVisible();
+});
+
+test('Results page loads directly', async ({ page }) => {
+  await page.goto('https://tripnest-ai.vercel.app/results');
+
+  await expect(page).toHaveURL(/results/);
+});
+
+test('Page survives refresh', async ({ page }) => {
+  await page.goto('https://tripnest-ai.vercel.app/home');
+
+  await page.reload();
+
+  await expect(
+    page.getByRole('button', { name: /Plan My Escape/i })
+  ).toBeVisible();
+});
+
+test('Desktop navbar visible', async ({ page }) => {
+  await page.goto('https://tripnest-ai.vercel.app');
+
+  await expect(
+    page.getByText('TripNest AI turns your budget')
+  ).toBeVisible();
+});

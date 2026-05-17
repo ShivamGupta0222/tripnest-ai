@@ -971,6 +971,7 @@ localStorage.setItem(
 
                 <div className="relative">
                   <input
+                   data-testid="city-input"
                     type="text"
                     placeholder={t.cityPlaceholder}
                     value={formData.from}

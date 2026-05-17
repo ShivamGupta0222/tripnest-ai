@@ -670,6 +670,7 @@ localStorage.setItem(
                   <input
                     type="text"
                     placeholder="e.g., Delhi"
+                     autoComplete="off"
                     value={formData.from}
                     onChange={(e) =>
                       setFormData({
@@ -678,7 +679,7 @@ localStorage.setItem(
                       })
                     }
                     className="w-full rounded-xl border border-border/50 bg-background px-4 py-3 text-base outline-none transition-colors focus:border-purple-500"
-                    list="city-suggestions"
+                    
                   />
 
 
@@ -706,6 +707,7 @@ localStorage.setItem(
                   <input
                     type="text"
                     placeholder="e.g., Goa"
+                     autoComplete="off"
                     value={formData.destination}
                     onChange={(e) =>
                       setFormData({
@@ -714,7 +716,7 @@ localStorage.setItem(
                       })
                     }
                     className="w-full rounded-xl border border-border/50 bg-background px-4 py-3 text-base outline-none transition-colors focus:border-purple-500"
-                    list="destination-suggestions"
+                    
                   />
 
                   

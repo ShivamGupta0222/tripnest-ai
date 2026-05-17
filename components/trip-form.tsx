@@ -681,11 +681,7 @@ localStorage.setItem(
                     list="city-suggestions"
                   />
 
-                  <datalist id="city-suggestions">
-                    {supportedCities.map((city) => (
-                      <option key={city} value={city} />
-                    ))}
-                  </datalist>
+
 
                   <p className="text-xs text-foreground/50 mt-2">
                     Start from a supported city — more pickup cities are coming
@@ -721,11 +717,7 @@ localStorage.setItem(
                     list="destination-suggestions"
                   />
 
-                  <datalist id="destination-suggestions">
-                    {supportedDestinations.map((destination) => (
-                      <option key={destination} value={destination} />
-                    ))}
-                  </datalist>
+                  
 
                   <p className="text-xs text-foreground/50 mt-2">
                     Choose a supported escape — more destinations are coming soon.

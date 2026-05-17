@@ -42,6 +42,275 @@ const languageOptions = [
   { id: 'Tamil', label: 'தமிழ்', emoji: '🔴' },
 ];
 
+const uiText = {
+  English: {
+    title: '{t.title}',
+    subtitle:
+      '{t.subtitle}',
+    startingCity: '{t.startingCity}',
+    cityPlaceholder: '{t.cityPlaceholder}',
+    pickupCity: '{t.pickupCity}',
+    cityHelp: 'Start from a supported city — more pickup cities are coming soon.',
+    cityError: '{t.cityError}',
+    destination: '{t.destination}',
+    destinationPlaceholder: '{t.destinationPlaceholder}',
+    supported: '{t.supported}',
+    destinationHelp: '{t.destinationHelp}',
+    destinationError: '{t.destinationError}',
+    budget: 'Budget',
+    realisticBudget: 'Your budget looks realistic for',
+    recommendedMinimum: 'Recommended minimum',
+    budgetShort: 'Your budget is short by',
+    travelers: '{t.travelers}',
+    travelersHelp: '{t.travelersHelp}',
+    duration: '{t.duration}',
+    durationHelp: '{t.durationHelp}',
+    date: '{t.date}',
+    dateHelp: '{t.dateHelp}',
+    comingAlong: '{t.comingAlong}',
+    soloInfo: 'Solo mode is active because you selected 1 traveler.',
+    coupleDisabled:
+      'Couple mode is disabled for odd traveler counts. Use 2 travelers for Couple mode.',
+    travelInfo: 'Solo is available only for 1 traveler. Couple works best with 2 travelers.',
+    vibe: '{t.vibe}',
+    budgetMood: '{t.budgetMood}',
+    transport: '{t.transport}',
+    language: '{t.language}',
+    languageHelp:
+      'Your itinerary will be generated in this language. More Indian languages coming soon ✨',
+    buttonLoading: '{t.loadingTitle}',
+    button: '{t.button}',
+    loadingTitle: '{t.loadingTitle}',
+    loadingDescription:
+      "We're building budget, comfort, and premium trip options around your destination, group size, and travel vibe.",
+    holdTight: '{t.holdTight}',
+    missingTitle: t.missingTitle,
+    missingMessage:
+      t.missingMessage,
+    cityNot{t.supported}Title: t.cityNot{t.supported}Title,
+    cityNot{t.supported}Message:
+      t.cityNot{t.supported}Message,
+    destinationNot{t.supported}Title: t.destinationNot{t.supported}Title,
+    destinationNot{t.supported}Message:
+      t.destinationNot{t.supported}Message,
+    invalidDateTitle: t.invalidDateTitle,
+    invalidDateMessage: t.invalidDateMessage,
+    vibeTitle: t.vibeTitle,
+    vibeMessage:
+      t.vibeMessage,
+    travelerTitle: t.travelerTitle,
+    travelerMessage:
+      t.travelerMessage,
+    generationFailed: t.generationFailed,
+    destinationLines: {
+      goa: t.destinationLines.goa,
+      manali: t.destinationLines.manali,
+      udaipur: t.destinationLines.udaipur,
+      rishikesh: t.destinationLines.rishikesh,
+      shimla: t.destinationLines.shimla,
+      mussoorie: t.destinationLines.mussoorie,
+      mcleodganj: t.destinationLines.mcleodganj,
+    },
+  },
+  Hindi: {
+    title: 'अपनी अगली ट्रिप बनाएं ✈️',
+    subtitle:
+      'पहाड़ों की सुबह से बीच सनसेट तक — TripNest AI आपकी पसंद, ग्रुप और बजट के हिसाब से ट्रिप बनाता है।',
+    startingCity: 'शुरुआती शहर',
+    cityPlaceholder: 'जैसे, Delhi',
+    pickupCity: 'पिकअप शहर',
+    cityHelp: 'सपोर्टेड शहर चुनें — और शहर जल्द आ रहे हैं।',
+    cityError: 'हम अभी इस शहर में सर्विस नहीं दे रहे हैं।',
+    destination: 'सपनों की जगह',
+    destinationPlaceholder: 'जैसे, Goa',
+    supported: 'सपोर्टेड',
+    destinationHelp: 'सपोर्टेड डेस्टिनेशन चुनें — और जगहें जल्द आ रही हैं।',
+    destinationError: 'हम अभी इस डेस्टिनेशन को सपोर्ट नहीं कर रहे हैं।',
+    budget: 'बजट',
+    realisticBudget: 'आपका बजट ठीक लग रहा है',
+    recommendedMinimum: 'सुझाया गया न्यूनतम बजट',
+    budgetShort: 'आपका बजट कम है',
+    travelers: 'कितने लोग जा रहे हैं',
+    travelersHelp: 'सीमा: 1 से 20 यात्री।',
+    duration: 'ट्रिप कितने दिन की है',
+    durationHelp: 'सीमा: 1 से 30 दिन।',
+    date: 'यात्रा की तारीख',
+    dateHelp: 'कैलेंडर से सही भविष्य की तारीख चुनें।',
+    comingAlong: 'कौन साथ आ रहा है?',
+    soloInfo: '1 यात्री चुनने की वजह से Solo mode active है।',
+    coupleDisabled: 'Odd traveler count में Couple mode disabled है। Couple के लिए 2 यात्री रखें।',
+    travelInfo: 'Solo सिर्फ 1 यात्री के लिए है। Couple 2 यात्रियों के लिए best है।',
+    vibe: 'अपना travel vibe चुनें',
+    budgetMood: 'अपना बजट मूड चुनें',
+    transport: 'Transport preference',
+    language: 'भाषा चुनें 🌐',
+    languageHelp:
+      'आपकी itinerary इसी भाषा में generate होगी। और भारतीय भाषाएँ जल्द आ रही हैं ✨',
+    buttonLoading: 'आपकी ट्रिप बन रही है...',
+    button: 'मेरी ट्रिप बनाएं ✨',
+    loadingTitle: 'आपकी ट्रिप vibe बन रही है...',
+    loadingDescription:
+      'हम आपके destination, group size और travel vibe के हिसाब से budget, comfort और premium trip options बना रहे हैं।',
+    holdTight: 'थोड़ा इंतज़ार करें — TripNest AI आपकी यात्रा बना रहा है।',
+    missingTitle: 'Trip details missing हैं',
+    missingMessage: 'Trip generate करने से पहले starting city और destination डालें।',
+    cityNot{t.supported}Title: 'यह शहर अभी supported नहीं है',
+    cityNot{t.supported}Message:
+      'TripNest AI अभी selected major Indian cities में available है। कृपया suggestions से supported city चुनें।',
+    destinationNot{t.supported}Title: 'यह destination अभी supported नहीं है',
+    destinationNot{t.supported}Message:
+      'TripNest AI अभी Shimla, Mussoorie, Manali, Haridwar-Rishikesh, Goa, McLeodganj और Udaipur support करता है।',
+    invalidDateTitle: 'Travel date सही नहीं है',
+    invalidDateMessage: 'कृपया calendar से valid future travel date चुनें।',
+    vibeTitle: 'Travel vibe चुनें',
+    vibeMessage: 'Personalized itinerary के लिए कम से कम एक travel vibe चुनें।',
+    travelerTitle: 'Traveler details complete करें',
+    travelerMessage: 'Trip generate करने से पहले travelers और days की valid संख्या डालें।',
+    generationFailed: t.generationFailed,
+    destinationLines: {
+      goa: 'Beach sunsets, cafes और late-night vibes आपका इंतज़ार कर रहे हैं 🌊',
+      manali: 'Mountain air, cafes और scenic roads आपका इंतज़ार कर रहे हैं 🏔️',
+      udaipur: 'Royal lakes, sunsets और calm luxury आपका इंतज़ार कर रहे हैं 🏰',
+      rishikesh: 'River rafting, cafés और peaceful mornings आपका इंतज़ार कर रहे हैं 🛶',
+      shimla: 'Mall Road walks, pine air और cozy cafés आपका इंतज़ार कर रहे हैं 🌲',
+      mussoorie: 'Cloudy viewpoints, cafés और slow mountain walks आपका इंतज़ार कर रहे हैं ☁️',
+      mcleodganj: 'Monastery calm, mountain cafés और hidden trails आपका इंतज़ार कर रहे हैं 🏕️',
+    },
+  },
+  Gujarati: {
+    title: 'તમારી આગામી ટ્રિપ બનાવો ✈️',
+    subtitle:
+      'પર્વતની સવારથી બીચ સનસેટ સુધી — TripNest AI તમારી પસંદ, ગ્રુપ અને બજેટ મુજબ ટ્રિપ બનાવે છે.',
+    startingCity: 'શરૂઆતનું શહેર',
+    cityPlaceholder: 'દા.ત., Delhi',
+    pickupCity: 'પિકઅપ શહેર',
+    cityHelp: 'સપોર્ટેડ શહેર પસંદ કરો — વધુ શહેરો જલ્દી આવશે.',
+    cityError: 'અમે હાલમાં આ શહેરમાં સર્વિસ આપતા નથી.',
+    destination: 'તમારી મનપસંદ જગ્યા',
+    destinationPlaceholder: 'દા.ત., Goa',
+    supported: 'સપોર્ટેડ',
+    destinationHelp: 'સપોર્ટેડ ડેસ્ટિનેશન પસંદ કરો — વધુ જગ્યાઓ જલ્દી આવશે.',
+    destinationError: 'અમે હાલમાં આ ડેસ્ટિનેશન સપોર્ટ કરતા નથી.',
+    budget: 'બજેટ',
+    realisticBudget: 'તમારું બજેટ યોગ્ય લાગે છે',
+    recommendedMinimum: 'સૂચવાયેલું ન્યૂનતમ બજેટ',
+    budgetShort: 'તમારું બજેટ ઓછું છે',
+    travelers: 'કેટલા લોકો જશે',
+    travelersHelp: 'મર્યાદા: 1 થી 20 પ્રવાસીઓ.',
+    duration: 'ટ્રિપની અવધિ',
+    durationHelp: 'મર્યાદા: 1 થી 30 દિવસ.',
+    date: 'યાત્રાની તારીખ',
+    dateHelp: 'કેલેન્ડરમાંથી યોગ્ય future date પસંદ કરો.',
+    comingAlong: 'કોણ સાથે આવી રહ્યું છે?',
+    soloInfo: '1 traveler પસંદ કરવાને કારણે Solo mode active છે.',
+    coupleDisabled: 'Odd traveler count માટે Couple mode disabled છે. Couple માટે 2 travelers રાખો.',
+    travelInfo: 'Solo ફક્ત 1 traveler માટે છે. Couple માટે 2 travelers best છે.',
+    vibe: 'તમારો travel vibe પસંદ કરો',
+    budgetMood: 'તમારો budget mood પસંદ કરો',
+    transport: 'Transport preference',
+    language: 'ભાષા પસંદ કરો 🌐',
+    languageHelp:
+      'તમારી itinerary આ ભાષામાં generate થશે. વધુ ભારતીય ભાષાઓ જલ્દી આવશે ✨',
+    buttonLoading: 'તમારી ટ્રિપ બની રહી છે...',
+    button: 'મારી ટ્રિપ બનાવો ✨',
+    loadingTitle: 'તમારી travel vibe બની રહી છે...',
+    loadingDescription:
+      'અમે તમારા destination, group size અને travel vibe મુજબ budget, comfort અને premium trip options બનાવી રહ્યા છીએ.',
+    holdTight: 'થોડું રાહ જુઓ — TripNest AI તમારી journey બનાવી રહ્યું છે.',
+    missingTitle: 'Trip details missing છે',
+    missingMessage: 'Trip generate કરતા પહેલાં starting city અને destination દાખલ કરો.',
+    cityNot{t.supported}Title: 'આ શહેર હજુ supported નથી',
+    cityNot{t.supported}Message:
+      'TripNest AI હાલમાં selected major Indian cities માટે available છે. Suggestionsમાંથી supported city પસંદ કરો.',
+    destinationNot{t.supported}Title: 'આ destination હજુ supported નથી',
+    destinationNot{t.supported}Message:
+      'TripNest AI હાલમાં Shimla, Mussoorie, Manali, Haridwar-Rishikesh, Goa, McLeodganj અને Udaipur support કરે છે.',
+    invalidDateTitle: 'Travel date યોગ્ય નથી',
+    invalidDateMessage: 'કૃપા કરીને calendarમાંથી valid future travel date પસંદ કરો.',
+    vibeTitle: 'Travel vibe પસંદ કરો',
+    vibeMessage: 'Personalized itinerary માટે ઓછામાં ઓછો એક travel vibe પસંદ કરો.',
+    travelerTitle: 'Traveler details complete કરો',
+    travelerMessage: 'Trip generate કરતા પહેલાં travelers અને days ની valid સંખ્યા દાખલ કરો.',
+    generationFailed: t.generationFailed,
+    destinationLines: {
+      goa: 'Beach sunsets, cafes અને late-night vibes તમારી રાહ જોઈ રહ્યા છે 🌊',
+      manali: 'Mountain air, cafes અને scenic roads તમારી રાહ જોઈ રહ્યા છે 🏔️',
+      udaipur: 'Royal lakes, sunsets અને calm luxury તમારી રાહ જોઈ રહ્યા છે 🏰',
+      rishikesh: 'River rafting, cafés અને peaceful mornings તમારી રાહ જોઈ રહ્યા છે 🛶',
+      shimla: 'Mall Road walks, pine air અને cozy cafés તમારી રાહ જોઈ રહ્યા છે 🌲',
+      mussoorie: 'Cloudy viewpoints, cafés અને slow mountain walks તમારી રાહ જોઈ રહ્યા છે ☁️',
+      mcleodganj: 'Monastery calm, mountain cafés અને hidden trails તમારી રાહ જોઈ રહ્યા છે 🏕️',
+    },
+  },
+  Tamil: {
+    title: 'உங்கள் அடுத்த பயணத்தை உருவாக்குங்கள் ✈️',
+    subtitle:
+      'மலை காலைகளில் இருந்து கடற்கரை சூரிய அஸ்தமனம் வரை — TripNest AI உங்கள் vibe, group மற்றும் budget அடிப்படையில் trip உருவாக்கும்.',
+    startingCity: 'தொடங்கும் நகரம்',
+    cityPlaceholder: 'எ.கா., Delhi',
+    pickupCity: '{t.pickupCity}',
+    cityHelp: '{t.supported} city தேர்வு செய்யுங்கள் — மேலும் நகரங்கள் விரைவில் வரும்.',
+    cityError: 'இந்த நகரத்தில் நாங்கள் தற்போது சேவை வழங்கவில்லை.',
+    destination: '{t.destination}',
+    destinationPlaceholder: 'எ.கா., Goa',
+    supported: '{t.supported}',
+    destinationHelp: '{t.supported} escape தேர்வு செய்யுங்கள் — மேலும் destinations விரைவில் வரும்.',
+    destinationError: 'இந்த destination தற்போது supported இல்லை.',
+    budget: 'Budget',
+    realisticBudget: 'உங்கள் budget realistic ஆக உள்ளது',
+    recommendedMinimum: 'Recommended minimum',
+    budgetShort: 'உங்கள் budget குறைவாக உள்ளது',
+    travelers: '{t.travelers}',
+    travelersHelp: 'Allowed range: 1 முதல் 20 travelers.',
+    duration: '{t.duration}',
+    durationHelp: 'Allowed range: 1 முதல் 30 நாட்கள்.',
+    date: '{t.date}',
+    dateHelp: 'Calendar-ல் இருந்து valid future date தேர்வு செய்யுங்கள்.',
+    comingAlong: 'யார் யார் வருகிறார்கள்?',
+    soloInfo: '1 traveler தேர்வு செய்ததால் Solo mode active ஆக உள்ளது.',
+    coupleDisabled: 'Odd traveler count-க்கு Couple mode disabled. Couple mode-க்கு 2 travelers பயன்படுத்தவும்.',
+    travelInfo: 'Solo 1 traveler-க்கு மட்டுமே. Couple 2 travelers-க்கு best.',
+    vibe: 'உங்கள் travel vibe தேர்வு செய்யுங்கள்',
+    budgetMood: 'உங்கள் budget mood தேர்வு செய்யுங்கள்',
+    transport: '{t.transport}',
+    language: 'மொழி தேர்வு 🌐',
+    languageHelp:
+      'உங்கள் itinerary இந்த மொழியில் generate ஆகும். மேலும் இந்திய மொழிகள் விரைவில் வரும் ✨',
+    buttonLoading: 'உங்கள் trip உருவாகிறது...',
+    button: 'என் Trip உருவாக்கு ✨',
+    loadingTitle: 'உங்கள் travel vibe உருவாகிறது...',
+    loadingDescription:
+      'உங்கள் destination, group size மற்றும் travel vibe அடிப்படையில் budget, comfort மற்றும் premium trip options உருவாக்குகிறோம்.',
+    holdTight: 'சிறிது காத்திருக்கவும் — TripNest AI உங்கள் journey உருவாக்குகிறது.',
+    missingTitle: 'Trip details missing',
+    missingMessage: 'Trip generate செய்வதற்கு முன் starting city மற்றும் destination உள்ளிடுங்கள்.',
+    cityNot{t.supported}Title: 'இந்த city இன்னும் supported இல்லை',
+    cityNot{t.supported}Message:
+      'TripNest AI தற்போது selected major Indian cities-ல் available. Suggestions-ல் இருந்து supported city தேர்வு செய்யுங்கள்.',
+    destinationNot{t.supported}Title: 'இந்த destination இன்னும் supported இல்லை',
+    destinationNot{t.supported}Message:
+      'TripNest AI தற்போது Shimla, Mussoorie, Manali, Haridwar-Rishikesh, Goa, McLeodganj மற்றும் Udaipur support செய்கிறது.',
+    invalidDateTitle: 'Travel date invalid',
+    invalidDateMessage: 'Calendar-ல் இருந்து valid future travel date தேர்வு செய்யுங்கள்.',
+    vibeTitle: 'Travel vibe தேர்வு செய்யுங்கள்',
+    vibeMessage: 'Personalized itinerary-க்காக குறைந்தது ஒரு travel vibe தேர்வு செய்யுங்கள்.',
+    travelerTitle: 'Traveler details complete செய்யுங்கள்',
+    travelerMessage: 'Trip generate செய்வதற்கு முன் valid travelers மற்றும் days number உள்ளிடுங்கள்.',
+    generationFailed: t.generationFailed,
+    destinationLines: {
+      goa: 'Beach sunsets, cafes மற்றும் late-night vibes காத்திருக்கின்றன 🌊',
+      manali: 'Mountain air, cafes மற்றும் scenic roads காத்திருக்கின்றன 🏔️',
+      udaipur: 'Royal lakes, sunsets மற்றும் calm luxury காத்திருக்கின்றன 🏰',
+      rishikesh: 'River rafting, cafés மற்றும் peaceful mornings காத்திருக்கின்றன 🛶',
+      shimla: 'Mall Road walks, pine air மற்றும் cozy cafés காத்திருக்கின்றன 🌲',
+      mussoorie: 'Cloudy viewpoints, cafés மற்றும் slow mountain walks காத்திருக்கின்றன ☁️',
+      mcleodganj: 'Monastery calm, mountain cafés மற்றும் hidden trails காத்திருக்கின்றன 🏕️',
+    },
+  },
+} as const;
+
+type {t.supported}Language = keyof typeof uiText;
+
 const supportedCities = [
   'Delhi',
   'Mumbai',
@@ -178,6 +447,9 @@ export function TripForm() {
       .toLowerCase()
       .includes(formData.destination.trim().toLowerCase())
   );
+
+  const currentLanguage = formData.language as {t.supported}Language;
+  const t = uiText[currentLanguage] || uiText.English;
 
   useEffect(() => {
     if (!isLoading) {
@@ -340,7 +612,7 @@ export function TripForm() {
     updateDays(Number(daysInput));
   };
 
-  const isSupportedCity = (cityName: string) => {
+  const is{t.supported}City = (cityName: string) => {
     const normalizedCity = cityName.trim().toLowerCase();
 
     return supportedCities.some(
@@ -348,7 +620,7 @@ export function TripForm() {
     );
   };
 
-  const isSupportedDestination = (destinationName: string) => {
+  const is{t.supported}Destination = (destinationName: string) => {
     const normalizedDestination = destinationName.trim().toLowerCase();
 
     return supportedDestinations.some(
@@ -374,24 +646,24 @@ export function TripForm() {
   const handleGenerateTrip = async () => {
     if (!formData.from || !formData.destination) {
       showFormError(
-        'Missing trip details',
-        'Please enter your from city and destination before generating your trip.'
+        t.missingTitle,
+        t.missingMessage
       );
       return;
     }
 
-    if (!isSupportedCity(formData.from)) {
+    if (!is{t.supported}City(formData.from)) {
       showFormError(
-        'City not supported yet',
-        'TripNest AI is currently available for selected major Indian cities. Please choose a supported city from the suggestions.'
+        t.cityNot{t.supported}Title,
+        t.cityNot{t.supported}Message
       );
       return;
     }
 
-    if (!isSupportedDestination(formData.destination)) {
+    if (!is{t.supported}Destination(formData.destination)) {
       showFormError(
-        'Destination not supported yet',
-        'TripNest AI currently supports Shimla, Mussoorie, Manali, Haridwar-Rishikesh, Goa, McLeodganj, and Udaipur.'
+        t.destinationNot{t.supported}Title,
+        t.destinationNot{t.supported}Message
       );
       return;
     }
@@ -407,24 +679,24 @@ export function TripForm() {
       selectedDate.getFullYear() > 2035
     ) {
       showFormError(
-        'Invalid travel date',
-        'Please select a valid future travel date from the calendar.'
+        t.invalidDateTitle,
+        t.invalidDateMessage
       );
       return;
     }
 
     if (selectedVibes.length === 0) {
       showFormError(
-        'Choose your travel vibe',
-        'Please select at least one travel vibe so TripNest AI can personalize your itinerary.'
+        t.vibeTitle,
+        t.vibeMessage
       );
       return;
     }
 
     if (travelersInput === '' || daysInput === '') {
       showFormError(
-        'Complete traveler details',
-        'Please enter a valid number of travelers and days before generating your trip.'
+        t.travelerTitle,
+        t.travelerMessage
       );
       return;
     }
@@ -493,7 +765,7 @@ localStorage.setItem(
       const errorMessage =
         error instanceof Error ? error.message : 'An error occurred';
 
-      showFormError('Trip generation failed', errorMessage);
+      showFormError(t.generationFailed, errorMessage);
       console.error('[TripForm] Error generating trip:', error);
     } finally {
       setIsLoading(false);
@@ -555,7 +827,7 @@ localStorage.setItem(
                   TripNest AI
                 </p>
                 <h3 className="mt-1 text-xl font-bold sm:text-2xl">
-                  Building your travel vibe...
+                  {t.loadingTitle}
                 </h3>
               </div>
             </div>
@@ -572,8 +844,7 @@ localStorage.setItem(
               </motion.p>
 
               <p className="mt-2 text-sm leading-6 text-foreground/60">
-                We&apos;re building budget, comfort, and premium trip options
-                around your destination, group size, and travel vibe.
+                {t.loadingDescription}
               </p>
 
               <div className="mt-5 h-2 overflow-hidden rounded-full bg-white/10">
@@ -599,7 +870,7 @@ localStorage.setItem(
             </div>
 
             <p className="mt-5 text-center text-xs text-foreground/45">
-              Hold tight — TripNest AI is crafting your journey.
+              {t.holdTight}
             </p>
           </motion.div>
         </motion.div>
@@ -640,7 +911,7 @@ localStorage.setItem(
             whileInView={{ opacity: 1 }}
             viewport={{ once: true }}
           >
-            Craft Your Next Escape ✈️
+            {t.title}
           </motion.h2>
 
           <motion.p
@@ -649,7 +920,7 @@ localStorage.setItem(
             whileInView={{ opacity: 1 }}
             viewport={{ once: true }}
           >
-            From mountain mornings to beach sunsets — TripNest AI builds your trip around your vibe, group and budget.
+            {t.subtitle}
           </motion.p>
 
           <motion.div
@@ -687,13 +958,13 @@ localStorage.setItem(
             <div className="mb-8 grid grid-cols-1 gap-5 md:grid-cols-2 md:gap-6">
               <div>
                 <label className="block text-sm font-medium mb-2">
-                  Starting City
+                  {t.startingCity}
                 </label>
 
                 <div className="relative">
                   <input
                     type="text"
-                    placeholder="e.g., Delhi"
+                    placeholder={t.cityPlaceholder}
                     value={formData.from}
                     autoComplete="off"
                     onFocus={() => setFocusedField('city')}
@@ -731,7 +1002,7 @@ localStorage.setItem(
                         >
                           <span>{city}</span>
                           <span className="text-xs text-purple-300">
-                            Pickup city
+                            {t.pickupCity}
                           </span>
                         </button>
                       ))}
@@ -739,14 +1010,13 @@ localStorage.setItem(
                   )}
 
                   <p className="text-xs text-foreground/50 mt-2">
-                    Start from a supported city — more pickup cities are coming
-                    soon.
+                    {t.cityHelp}
                   </p>
 
                   {formData.from.trim() !== '' &&
-                    !isSupportedCity(formData.from) && (
+                    !is{t.supported}City(formData.from) && (
                       <p className="text-xs text-red-400 mt-2">
-                        We are currently not serving this city yet.
+                        {t.cityError}
                       </p>
                     )}
                 </div>
@@ -754,13 +1024,13 @@ localStorage.setItem(
 
               <div>
                 <label className="block text-sm font-medium mb-2">
-                  Dream Destination
+                  {t.destination}
                 </label>
 
                 <div className="relative">
                   <input
                     type="text"
-                    placeholder="e.g., Goa"
+                    placeholder={t.destinationPlaceholder}
                     value={formData.destination}
                     autoComplete="off"
                     onFocus={() => setFocusedField('destination')}
@@ -799,7 +1069,7 @@ localStorage.setItem(
                           >
                             <span>{destination}</span>
                             <span className="text-xs text-blue-300">
-                              Supported
+                              {t.supported}
                             </span>
                           </button>
                         ))}
@@ -807,51 +1077,51 @@ localStorage.setItem(
                     )}
 
                   <p className="text-xs text-foreground/50 mt-2">
-                    Choose a supported escape — more destinations are coming soon.
+                    {t.destinationHelp}
                   </p>
 
                   {formData.destination.trim() !== '' &&
-                    !isSupportedDestination(formData.destination) && (
+                    !is{t.supported}Destination(formData.destination) && (
                       <p className="text-xs text-red-400 mt-2">
-                        We are currently not supporting this destination yet.
+                        {t.destinationError}
                       </p>
                     )}
 
                   {formData.destination.trim() !== '' &&
-                    isSupportedDestination(formData.destination) && (
+                    is{t.supported}Destination(formData.destination) && (
                       <p className="mt-2 text-xs text-cyan-200">
                         {formData.destination.toLowerCase().includes('goa') &&
-                          'Beach sunsets, cafes and late-night vibes await 🌊'}
+                          t.destinationLines.goa}
 
                         {formData.destination
                           .toLowerCase()
                           .includes('manali') &&
-                          'Mountain air, cafes and scenic roads await 🏔️'}
+                          t.destinationLines.manali}
 
                         {formData.destination
                           .toLowerCase()
                           .includes('udaipur') &&
-                          'Royal lakes, sunsets and calm luxury await 🏰'}
+                          t.destinationLines.udaipur}
 
                         {formData.destination
                           .toLowerCase()
                           .includes('rishikesh') &&
-                          'River rafting, cafés and peaceful mornings await 🛶'}
+                          t.destinationLines.rishikesh}
 
                         {formData.destination
                           .toLowerCase()
                           .includes('shimla') &&
-                          'Mall Road walks, pine air and cozy cafés await 🌲'}
+                          t.destinationLines.shimla}
 
                         {formData.destination
                           .toLowerCase()
                           .includes('mussoorie') &&
-                          'Cloudy viewpoints, cafés and slow mountain walks await ☁️'}
+                          t.destinationLines.mussoorie}
 
                         {formData.destination
                           .toLowerCase()
                           .includes('mcleodganj') &&
-                          'Monastery calm, mountain cafés and hidden trails await 🏕️'}
+                          t.destinationLines.mcleodganj}
                       </p>
                     )}
                 </div>
@@ -859,7 +1129,7 @@ localStorage.setItem(
 
               <div>
                 <label className="block text-sm font-medium mb-2">
-                  Budget: ₹{formData.budget.toLocaleString('en-IN')}
+                  {t.budget}: ₹{formData.budget.toLocaleString('en-IN')}
                 </label>
 
                 <input
@@ -887,15 +1157,15 @@ localStorage.setItem(
                   >
                     {formData.budget >= recommendedBudget ? (
                       <>
-                        Your budget looks realistic for {destinationRule.name}.{' '}
-                        Recommended minimum: ₹
+                        {t.realisticBudget} {destinationRule.name}.{' '}
+                        {t.recommendedMinimum}: ₹
                         {recommendedBudget.toLocaleString('en-IN')}.
                       </>
                     ) : (
                       <>
-                        Recommended minimum for {destinationRule.name}: ₹
-                        {recommendedBudget.toLocaleString('en-IN')}. Your
-                        budget is short by ₹{budgetGap.toLocaleString('en-IN')}.
+                        {t.recommendedMinimum} for {destinationRule.name}: ₹
+                        {recommendedBudget.toLocaleString('en-IN')}. {t.budgetShort} ₹
+                        {budgetGap.toLocaleString('en-IN')}.
                       </>
                     )}
                   </div>
@@ -904,7 +1174,7 @@ localStorage.setItem(
 
               <div>
                 <label className="block text-sm font-medium mb-2">
-                  Travel Squad Size
+                  {t.travelers}
                 </label>
 
                 <input
@@ -919,13 +1189,13 @@ localStorage.setItem(
                 />
 
                 <p className="text-xs text-foreground/50 mt-2">
-                  Allowed range: 1 to 20 travelers.
+                  {t.travelersHelp}
                 </p>
               </div>
 
               <div>
                 <label className="block text-sm font-medium mb-2">
-                  Trip Duration
+                  {t.duration}
                 </label>
 
                 <input
@@ -940,13 +1210,13 @@ localStorage.setItem(
                 />
 
                 <p className="text-xs text-foreground/50 mt-2">
-                  Allowed range: 1 to 30 days.
+                  {t.durationHelp}
                 </p>
               </div>
 
               <div>
                 <label className="block text-sm font-medium mb-2">
-                  Journey Date
+                  {t.date}
                 </label>
 
                 <input
@@ -967,14 +1237,14 @@ localStorage.setItem(
                 />
 
                 <p className="text-xs text-foreground/50 mt-2">
-                  Select a valid future date from the calendar.
+                  {t.dateHelp}
                 </p>
               </div>
             </div>
 
             <div className="mb-8">
               <label className="block text-sm font-medium mb-3">
-                Who’s coming along?
+                {t.comingAlong}
               </label>
 
               <div className="grid grid-cols-2 gap-3 md:grid-cols-4">
@@ -1019,16 +1289,16 @@ localStorage.setItem(
 
               <p className="mt-3 text-xs text-foreground/50">
                 {formData.travelers === 1
-                  ? 'Solo mode is active because you selected 1 traveler.'
+                  ? t.soloInfo
                   : formData.travelers % 2 !== 0
-                    ? 'Couple mode is disabled for odd traveler counts. Use 2 travelers for Couple mode.'
-                    : 'Solo is available only for 1 traveler. Couple works best with 2 travelers.'}
+                    ? t.coupleDisabled
+                    : t.travelInfo}
               </p>
             </div>
 
             <div className="mb-8">
               <label className="block text-sm font-medium mb-3">
-                Pick your travel vibe
+                {t.vibe}
               </label>
 
               <div className="grid grid-cols-2 gap-3 md:grid-cols-4">
@@ -1054,7 +1324,7 @@ localStorage.setItem(
 
             <div className="mb-8">
               <label className="block text-sm font-medium mb-3">
-                Choose your budget mood
+                {t.budgetMood}
               </label>
 
               <div className="grid grid-cols-1 gap-3 md:grid-cols-3">
@@ -1085,7 +1355,7 @@ localStorage.setItem(
 
             <div className="mb-8">
               <label className="block text-sm font-medium mb-3">
-                Transport Preference
+                {t.transport}
               </label>
 
               <div className="grid grid-cols-1 gap-3 md:grid-cols-3">
@@ -1116,7 +1386,7 @@ localStorage.setItem(
 
             <div className="mb-8">
               <label className="block text-sm font-medium mb-3">
-                Preferred Language 🌐
+                {t.language}
               </label>
 
               <div className="grid grid-cols-2 gap-3 md:grid-cols-4">
@@ -1145,8 +1415,7 @@ localStorage.setItem(
               </div>
 
               <p className="mt-3 text-xs text-foreground/50">
-                Your itinerary will be generated in this language. More Indian
-                languages coming soon ✨
+                {t.languageHelp}
               </p>
             </div>
 
@@ -1159,8 +1428,8 @@ localStorage.setItem(
               whileTap={{ scale: 0.98 }}
             >
               {isLoading
-                ? 'Building your travel vibe...'
-                : 'Plan My Escape ✨'}
+                ? t.buttonLoading
+                : t.button}
             </motion.button>
           </motion.div>
         </div>

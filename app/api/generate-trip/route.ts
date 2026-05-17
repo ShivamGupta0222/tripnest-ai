@@ -12,6 +12,7 @@ interface TripRequest {
   vibe: string[];
   budgetStyle: string;
   transportPreference: string;
+  language: string;
 }
 
 interface TripPlan {
@@ -166,6 +167,7 @@ TRIP REQUEST:
 - Selected vibes: ${vibeText}
 - Budget philosophy: ${data.budgetStyle}
 - Transport preference: ${data.transportPreference}
+- Preferred language: ${data.language}
 - Personalization seed: ${generationSeed}
 
 USER TRAVEL PERSONALITY:
@@ -173,6 +175,13 @@ ${vibePersonality}
 
 DESTINATION PERSONALITY:
 ${destinationFlavor}
+
+LANGUAGE RULES:
+- Generate the ENTIRE itinerary in ${data.language}.
+- All descriptions, highlights, daily plans, budget notes, and titles must be written naturally in ${data.language}.
+- Keep destination names in their commonly used form.
+- Use conversational, easy-to-understand wording for Indian travelers.
+- Do not mix multiple languages unless needed for place names.
 
 ABSOLUTE PERSONALIZATION RULES:
 - The itinerary MUST change meaningfully based on selected vibes.

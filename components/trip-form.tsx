@@ -35,6 +35,13 @@ const transportOptions = [
   { id: 'comfortable', label: 'Most Comfortable', emoji: '🚗' },
 ];
 
+const languageOptions = [
+  { id: 'English', label: 'English', emoji: '🇺🇸' },
+  { id: 'Hindi', label: 'हिन्दी', emoji: '🇮🇳' },
+  { id: 'Gujarati', label: 'ગુજરાતી', emoji: '🟢' },
+  { id: 'Tamil', label: 'தமிழ்', emoji: '🔴' },
+];
+
 const supportedCities = [
   'Delhi',
   'Mumbai',
@@ -148,6 +155,7 @@ export function TripForm() {
     travelWith: 'friends',
     budgetStyle: 'balanced',
     transport: 'cheapest',
+    language: 'English',
   });
 
   const [travelersInput, setTravelersInput] = useState('2');
@@ -435,6 +443,7 @@ export function TripForm() {
   vibe: selectedVibes,
   budgetStyle: formData.budgetStyle,
   transportPreference: formData.transport,
+  language: formData.language,
 };
 
 
@@ -446,6 +455,7 @@ localStorage.setItem(
     travelWith: formData.travelWith,
     transport: formData.transport,
     travelers: formData.travelers,
+    language: formData.language,
   })
 );
 
@@ -1102,6 +1112,42 @@ localStorage.setItem(
                   </motion.button>
                 ))}
               </div>
+            </div>
+
+            <div className="mb-8">
+              <label className="block text-sm font-medium mb-3">
+                Preferred Language 🌐
+              </label>
+
+              <div className="grid grid-cols-2 gap-3 md:grid-cols-4">
+                {languageOptions.map((option) => (
+                  <motion.button
+                    key={option.id}
+                    type="button"
+                    onClick={() =>
+                      setFormData({
+                        ...formData,
+                        language: option.id,
+                      })
+                    }
+                    className={`px-4 py-3 rounded-xl transition-all flex flex-col items-center gap-2 border ${
+                      formData.language === option.id
+                        ? 'bg-gradient-to-r from-purple-500 to-blue-500 text-white border-purple-500 shadow-lg shadow-purple-500/50'
+                        : 'bg-background border-border/50 hover:border-purple-500'
+                    }`}
+                    whileHover={{ y: -2 }}
+                  >
+                    <span className="text-2xl">{option.emoji}</span>
+
+                    <span className="text-sm font-medium">{option.label}</span>
+                  </motion.button>
+                ))}
+              </div>
+
+              <p className="mt-3 text-xs text-foreground/50">
+                Your itinerary will be generated in this language. More Indian
+                languages coming soon ✨
+              </p>
             </div>
 
             <motion.button

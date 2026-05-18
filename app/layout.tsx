@@ -64,7 +64,8 @@ export default function RootLayout({
       <body className="antialiased">
         <AuthProvider>{children}</AuthProvider>
 
-        {process.env.NODE_ENV === 'production' && <Analytics />}
+        
+        <Analytics />
       </body>
     </html>
   );

@@ -30,21 +30,37 @@
 @layer base {
   * {
     @apply border-border;
+    box-sizing: border-box;
   }
 
   html {
     @apply bg-background;
+    width: 100%;
+    max-width: 100%;
+    overflow-x: hidden;
     scroll-behavior: smooth;
+    -webkit-tap-highlight-color: transparent;
   }
 
   body {
     @apply bg-background text-foreground antialiased;
+    width: 100%;
+    max-width: 100%;
     min-height: 100vh;
+    overflow-x: hidden;
+    overscroll-behavior-x: none;
     background:
       radial-gradient(circle at top left, rgba(139, 92, 246, 0.16), transparent 34%),
       radial-gradient(circle at bottom right, rgba(37, 99, 235, 0.12), transparent 36%),
       linear-gradient(180deg, #050812 0%, #070b16 45%, #050812 100%);
     text-rendering: optimizeLegibility;
+  }
+
+  img,
+  video,
+  canvas,
+  svg {
+    max-width: 100%;
   }
 
   ::selection {

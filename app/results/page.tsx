@@ -630,6 +630,7 @@ export default function ResultsPage() {
   }, [draft, activePlanIndex, tripContext]);
 
   const handleModalOpenChange = useCallback((open: boolean) => {
+    document.body.style.overflow = open ? 'hidden' : 'auto';
     setModalOpen(open);
 
     if (!open) {
@@ -943,7 +944,7 @@ const handleProceedToBooking = async () => {
   }
 };
   return (
-    <main className="bg-background min-h-screen overflow-hidden py-12 sm:py-20">
+    <main className="bg-background min-h-screen overflow-x-hidden py-12 sm:py-20">
       {bookingModalOpen && (
         <motion.div
           className="fixed inset-0 z-[9999] flex items-start justify-center overflow-y-auto bg-black/70 px-3 py-5 backdrop-blur-md sm:items-center sm:px-4"
@@ -951,7 +952,7 @@ const handleProceedToBooking = async () => {
           animate={{ opacity: 1 }}
         >
           <motion.div
-            className="relative w-full max-w-lg overflow-hidden rounded-3xl border border-purple-500/30 bg-background/95 shadow-2xl shadow-purple-500/20 max-h-[92vh] overflow-y-auto"
+            className="relative w-full max-w-lg overflow-x-hidden rounded-3xl border border-purple-500/30 bg-background/95 shadow-2xl shadow-purple-500/20 max-h-[92vh] overflow-y-auto"
             initial={{ opacity: 0, scale: 0.92, y: 20 }}
             animate={{ opacity: 1, scale: 1, y: 0 }}
             transition={{ duration: 0.25 }}
@@ -1120,21 +1121,21 @@ const handleProceedToBooking = async () => {
         )}
 
         <motion.div
-          className="absolute top-0 left-1/4 w-96 h-96 bg-purple-600/20 rounded-full blur-3xl"
+          className="absolute top-0 left-1/4 w-96 h-96 bg-purple-600/20 rounded-full blur-2xl"
           animate={{
             x: [0, 30, 0],
             y: [0, 20, 0],
           }}
-          transition={{ duration: 8, repeat: Infinity }}
+          transition={{ duration: 14, repeat: Infinity }}
         />
 
         <motion.div
-          className="absolute bottom-0 right-1/4 w-96 h-96 bg-blue-600/20 rounded-full blur-3xl"
+          className="absolute bottom-0 right-1/4 w-96 h-96 bg-blue-600/20 rounded-full blur-2xl"
           animate={{
             x: [0, -30, 0],
             y: [0, -20, 0],
           }}
-          transition={{ duration: 10, repeat: Infinity }}
+          transition={{ duration: 14, repeat: Infinity }}
         />
       </div>
 
@@ -1281,7 +1282,7 @@ const handleProceedToBooking = async () => {
         </motion.div>
 
         <motion.div
-          className="grid grid-cols-1 gap-5 sm:gap-6 lg:grid-cols-3 lg:gap-8"
+          className="grid grid-cols-1 gap-5 overflow-x-hidden sm:gap-6 lg:grid-cols-3 lg:gap-8"
           variants={containerVariants}
           initial="hidden"
           animate="visible"

@@ -73,23 +73,35 @@ export function buildEditableFromItinerary(plan: {
   bestFor: string;
   stayStyle: string;
   transportStyle: string;
-  highlights: string[];
-  dailyPlan: string[];
+  highlights?: string[];
+  dailyPlan?: string[];
   budgetNote?: string;
 }): EditableItinerary {
+  const safeHighlights =
+    Array.isArray(plan.highlights) && plan.highlights.length > 0
+      ? plan.highlights
+      : ['Personalized highlights will appear here.'];
+
+  const safeDailyPlan =
+    Array.isArray(plan.dailyPlan) && plan.dailyPlan.length > 0
+      ? plan.dailyPlan
+      : ['Day 1: Explore the destination, local food, and nearby attractions'];
+
   return {
-    name: plan.name,
-    description: plan.subtitle,
-    estimatedRange: plan.pricing,
-    bestFor: plan.bestFor,
-    stayStyle: plan.stayStyle,
-    transportStyle: plan.transportStyle,
+    name: plan.name || 'Trip Plan',
+    description: plan.subtitle || 'Personalized itinerary by TripNest AI',
+    estimatedRange: plan.pricing || 'Flexible pricing',
+    bestFor: plan.bestFor || 'Travelers',
+    stayStyle: plan.stayStyle || 'Comfortable stays',
+    transportStyle: plan.transportStyle || 'Local transport',
     budgetNote: plan.budgetNote ?? '',
-    highlights: plan.highlights.map((text, i) => ({ id: `h-${i}`, text })),
-    days: buildEditableDays(plan.dailyPlan),
+    highlights: safeHighlights.map((text, i) => ({
+      id: `h-${i}`,
+      text,
+    })),
+    days: buildEditableDays(safeDailyPlan),
   };
 }
-
 export function mergeDraftToItineraryData(
   draft: EditableItinerary,
   base: {
